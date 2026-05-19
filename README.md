@@ -14,7 +14,7 @@ A lightweight menu bar note-taking app for macOS, inspired by [Tot](https://tot.
 
 | Editor (Raw) | Markdown Preview |
 |---|---|
-| Dark themed editor with colored dot tabs | Full GFM Markdown rendering |
+| ![Editor Raw](assets/screenshot-raw.jpeg) | ![Markdown Preview](assets/screenshot-preview.jpeg) |
 
 ## Keyboard Shortcuts
 

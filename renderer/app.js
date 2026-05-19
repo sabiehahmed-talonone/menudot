@@ -55,11 +55,25 @@ function renderDots() {
   });
 }
 
+// Update background accent color based on active tab
+function updateAccentColor(color) {
+  // Convert hex to RGB and apply as a subtle tint to the dark background
+  const r = parseInt(color.slice(1, 3), 16);
+  const g = parseInt(color.slice(3, 5), 16);
+  const b = parseInt(color.slice(5, 7), 16);
+  document.body.style.backgroundColor = `rgb(${Math.round(r * 0.1 + 14)}, ${Math.round(g * 0.1 + 14)}, ${Math.round(b * 0.1 + 20)})`;
+  const barColor = `rgb(${Math.round(r * 0.08 + 12)}, ${Math.round(g * 0.08 + 12)}, ${Math.round(b * 0.08 + 18)})`;
+  document.querySelectorAll('.tab-bar, .toolbar, .status-bar').forEach(el => {
+    el.style.backgroundColor = barColor;
+  });
+}
+
 // Load tab content into editor
 function loadTab(tabId) {
   const tab = tabs.find(t => t.id === tabId);
   if (!tab) return;
   editor.value = tab.content || '';
+  updateAccentColor(tab.color);
   updateCounts();
   updatePreview();
   if (!isPreview) editor.focus();
