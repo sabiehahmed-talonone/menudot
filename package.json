@@ -5,7 +5,7 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "test": "vitest run",
+    "test": "vitest run --exclude e2e",
     "test:e2e": "npx playwright test",
     "dist": "electron-builder --mac dmg"
   },
