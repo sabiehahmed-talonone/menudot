@@ -5,6 +5,8 @@
   "main": "main.js",
   "scripts": {
     "start": "electron .",
+    "test": "vitest run",
+    "test:e2e": "npx playwright test",
     "dist": "electron-builder --mac dmg"
   },
   "build": {
@@ -61,7 +63,9 @@
     "menubar": "^9.5.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.60.0",
     "electron": "^34.0.0",
-    "electron-builder": "^26.8.1"
+    "electron-builder": "^26.8.1",
+    "vitest": "^4.1.6"
   }
 }

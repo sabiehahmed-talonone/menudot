@@ -84,7 +84,7 @@ Since the app is not signed with an Apple Developer certificate:
 
 ### Installing the unsigned DMG
 
-1. Open `MenuDot-1.0.0-arm64.dmg`
+1. Open the downloaded `.dmg` file
 2. Drag **MenuDot** into the **Applications** folder
 3. **First launch only** — do one of the following:
 
@@ -106,6 +106,26 @@ Since the app is not signed with an Apple Developer certificate:
    - Click **Open Anyway**
 
 4. After the first launch, MenuDot opens normally every time.
+
+### Reinstalling / Updating
+
+1. Quit MenuDot if it's running (click the menu bar dot → close, or `killall MenuDot`)
+2. Open the new `.dmg` and drag **MenuDot** into **Applications**, replacing the existing copy
+3. Launch MenuDot — your notes are preserved (stored separately in `~/Library/Application Support/menudot/`)
+
+> **Note:** You do not need to bypass Gatekeeper again after a reinstall to the same location.
+
+### Uninstalling
+
+1. Quit MenuDot if it's running
+2. Delete the app:
+   ```bash
+   rm -rf /Applications/MenuDot.app
+   ```
+3. Remove saved notes and preferences:
+   ```bash
+   rm -rf ~/Library/Application\ Support/menudot
+   ```
 
 ## Project Structure
 
