@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline';">
+  <title>MenuDot</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="tab-bar">
+      <div id="dots-container"></div>
+      <button id="add-tab-btn" class="add-tab" title="Add tab">+</button>
+    </div>
+    <div class="toolbar">
+      <button id="remove-tab-btn" class="toolbar-btn" title="Close current tab">&times; Close</button>
+      <div class="toolbar-spacer"></div>
+      <button id="toggle-preview" class="toolbar-btn" title="Toggle markdown preview">Preview</button>
+    </div>
+    <textarea id="editor" placeholder="Start typing... (supports Markdown)" spellcheck="true"></textarea>
+    <div id="preview" class="preview hidden"></div>
+    <div class="status-bar">
+      <span id="word-count">0 words</span>
+      <span id="mode-indicator">Raw</span>
+      <span id="char-count">0 characters</span>
+    </div>
+  </div>
+  <script src="../node_modules/marked/lib/marked.umd.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

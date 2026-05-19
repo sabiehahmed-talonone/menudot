@@ -1,0 +1,67 @@
+{
+  "name": "menudot",
+  "version": "1.0.0",
+  "description": "Menu bar note-taking app for macOS",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --mac dmg"
+  },
+  "build": {
+    "appId": "com.menudot.app",
+    "productName": "MenuDot",
+    "mac": {
+      "icon": "assets/icon.icns",
+      "category": "public.app-category.productivity",
+      "identity": null,
+      "target": [
+        {
+          "target": "dmg",
+          "arch": [
+            "universal"
+          ]
+        }
+      ],
+      "extendInfo": {
+        "LSUIElement": true
+      }
+    },
+    "dmg": {
+      "title": "MenuDot",
+      "icon": "assets/icon.icns",
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ],
+      "window": {
+        "width": 540,
+        "height": 380
+      }
+    },
+    "files": [
+      "main.js",
+      "preload.js",
+      "renderer/**/*",
+      "assets/iconTemplate.png",
+      "assets/iconTemplate@2x.png",
+      "node_modules/**/*"
+    ]
+  },
+  "dependencies": {
+    "electron-store": "^8.2.0",
+    "marked": "^18.0.4",
+    "menubar": "^9.5.0"
+  },
+  "devDependencies": {
+    "electron": "^34.0.0",
+    "electron-builder": "^26.8.1"
+  }
+}
