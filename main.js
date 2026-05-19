@@ -2,25 +2,11 @@ const { app, nativeImage, ipcMain, Menu } = require('electron');
 const { menubar } = require('menubar');
 const Store = require('electron-store');
 const path = require('path');
-
-const TAB_COLORS = [
-  '#ff6b35', '#f7c948', '#48bb78', '#38b2ac',
-  '#4299e1', '#9f7aea', '#ed64a6', '#e53e3e',
-  '#dd6b20', '#d69e2e', '#319795', '#3182ce',
-  '#805ad5', '#d53f8c', '#718096'
-];
+const { DEFAULT_TABS, getNextColor } = require('./lib/tabs');
 
 const store = new Store({
   defaults: {
-    tabs: [
-      { id: '1', color: '#ff6b35', content: '' },
-      { id: '2', color: '#f7c948', content: '' },
-      { id: '3', color: '#48bb78', content: '' },
-      { id: '4', color: '#38b2ac', content: '' },
-      { id: '5', color: '#4299e1', content: '' },
-      { id: '6', color: '#9f7aea', content: '' },
-      { id: '7', color: '#ed64a6', content: '' }
-    ],
+    tabs: DEFAULT_TABS,
     activeTabId: '1'
   }
 });
@@ -137,11 +123,9 @@ ipcMain.handle('save-active-tab-id', (_event, tabId) => {
 
 ipcMain.handle('add-tab', () => {
   const tabs = store.get('tabs');
-  const usedColors = new Set(tabs.map(t => t.color));
-  const nextColor = TAB_COLORS.find(c => !usedColors.has(c)) || TAB_COLORS[tabs.length % TAB_COLORS.length];
   const newTab = {
     id: Date.now().toString(),
-    color: nextColor,
+    color: getNextColor(tabs),
     content: ''
   };
   tabs.push(newTab);
